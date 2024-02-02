@@ -1,6 +1,8 @@
 import _ from "lodash";
 import "./style.css";
 import Logo from "./logo.png";
+import Data from "./data.xml";
+import Notes from "./data.csv";
 
 function component() {
   const element = document.createElement("div");
@@ -12,6 +14,9 @@ function component() {
   myLogo.src = Logo;
 
   element.appendChild(myLogo);
+
+  console.log(Data);
+  console.log(Notes);
 
   return element;
 }
