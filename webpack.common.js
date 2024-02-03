@@ -8,7 +8,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Production",
+      title: "가오리당 기술 블로그",
+      template: "./index.html",
+      meta: {
+        author: "gaoridang",
+        Keyowrds: "가오리당",
+        keywords: "html, css, javascript, typescript",
+        description:
+          "웹 개발 기술 블로그입니다! 바닐라 자바스크립트로 개발 중입니다.",
+        robots: "index, follow",
+        Date: "2024-02-04T12:14:00+09:00",
+      },
     }),
   ],
   output: {
