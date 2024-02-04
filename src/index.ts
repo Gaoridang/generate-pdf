@@ -1,7 +1,8 @@
 import "./style.css";
 import createRouter from "./router";
+import createElement from "./createElement";
 
-const routes = ["home", "melon"];
+const routes = ["/home", "/melon"];
 
 function component() {
   const container = document.querySelector("#root") as HTMLDivElement;
@@ -9,10 +10,13 @@ function component() {
   document.body.insertAdjacentElement("afterbegin", header);
 
   routes.forEach((route) => {
-    const link = document.createElement("a");
-    link.href = `#/${route}`;
-    link.innerText = `${route}`;
-    header.appendChild(link);
+    const button = createElement("button", {
+      attributes: { "data-navigate": route },
+      text: route,
+      onClick: () => router.navigate(route),
+    });
+
+    header.appendChild(button);
   });
 
   const router = createRouter();
