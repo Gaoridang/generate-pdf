@@ -7,9 +7,8 @@ export default function createRouter() {
   const routes: Route = [];
 
   function checkRoutes() {
-    const currentRoute = routes.find(
-      (route) => route.fragment === window.location.hash
-    );
+    if (!window.location.hash) return;
+    const currentRoute = routes.find((route) => route.fragment === window.location.hash);
     currentRoute.component();
   }
 

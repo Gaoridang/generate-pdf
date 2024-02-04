@@ -1,3 +1,45 @@
 .hello {
   color: blue;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-me {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "title title"
+    "position position"
+    "phoneNumber email"
+    "coverLetter coverLetter";
+}
+
+.careers {
+  display: grid;
+  gap: 1rem;
+}
+
+.title {
+  grid-area: title;
+}
+
+.position {
+  grid-area: position;
+}
+
+.phoneNumber {
+  grid-area: phoneNumber;
+}
+
+.email {
+  grid-area: email;
+}
+
+.coverLetter {
+  grid-area: coverLetter;
+}
