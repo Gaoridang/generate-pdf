@@ -1,3 +1,22 @@
+input {
+  padding: 1rem;
+  border: 1px solid #eaecee;
+  outline: none;
+}
+
+input:hover {
+  border: 1px solid #b2bac4;
+}
+
+input:focus {
+  border: 1px solid #535961;
+}
+
+.section {
+  display: grid;
+  gap: 0.5rem;
+}
+
 .hello {
   color: blue;
 }
@@ -43,3 +62,5 @@
 .coverLetter {
   grid-area: coverLetter;
 }
+
+/* sections */
