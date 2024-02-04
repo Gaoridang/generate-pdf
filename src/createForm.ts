@@ -84,7 +84,16 @@ export function createForm() {
       // pdf download url
       const blob = await response.blob();
       const downloadUrl = URL.createObjectURL(blob);
-      window.open(downloadUrl, "_blank");
+
+      const downloadLink = createElement("a") as HTMLAnchorElement;
+      downloadLink.href = downloadUrl;
+      downloadLink.download = "이력서.pdf";
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
+      document.body.removeChild(downloadLink);
+      window.URL.revokeObjectURL(downloadUrl);
     } catch (error) {
       console.error("Error generating PDF: ", error);
     }
