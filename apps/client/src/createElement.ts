@@ -10,7 +10,7 @@ type ElementProps = {
   text: string;
   attributes: { [key: string]: string };
   children: HTMLElement[] | HTMLElement;
-  onClick: (this: HTMLElement, e: MouseEvent) => any;
+  events: { [key: string]: (this: HTMLElement, e: Event) => any };
   onChange: (this: HTMLElement, e: Event) => any;
 } & InputElementProps;
 
@@ -41,8 +41,10 @@ export default function createElement(
       const children = Array.isArray(props.children) ? props.children : [props.children];
       children.forEach((child) => element.appendChild(child));
     }
-    if (props.onClick) {
-      element.addEventListener("click", props.onClick);
+    if (props.events) {
+      Object.entries(props.events).forEach(([event, handler]) => {
+        element.addEventListener(event, handler);
+      });
     }
   }
 
