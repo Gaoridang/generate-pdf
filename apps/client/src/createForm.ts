@@ -19,8 +19,6 @@ export function createForm() {
 
     return createLabel(inputType.kr, inputType.name, inputEl);
   });
-  // FIXME: 엔터 누르면 커리어 인풋이 추가됨(?)
-  // const careerSection = createSection("career", [textAreas[0]]);
 
   const aboutMeContainer = createElement("div", {
     className: "about-me",
@@ -50,18 +48,43 @@ export function createForm() {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const sections = {};
+    const formElements = form.querySelectorAll("input, textarea");
+
+    formElements.forEach((element) => {
+      const inputElement = element as HTMLInputElement | HTMLTextAreaElement;
+      const value = (element as HTMLInputElement).value.trim();
+
+      if (inputElement.dataset.section) {
+        const section = inputElement.dataset.section;
+
+        if (!value) return;
+
+        if (!sections[section]) {
+          sections[section] = [];
+        }
+
+        sections[section].push(value);
+      } else {
+        const name = inputElement.name;
+        if (!sections[name]) {
+          sections[name] = [value];
+        }
+      }
+    });
+
     let formDataHtml = `<div class='form-data'>`;
 
-    inputTypes.forEach((inputType) => {
-      const inputEl = document.querySelector(`input[name="${inputType.name}"]`) as HTMLInputElement;
-      if (inputEl) {
-        formDataHtml += `
-          <div class=${inputType.name}-container>
-            <h2>${inputType.name}</h2>
-            <p>${inputEl.value}</p>
-          </div>
-        `;
-      }
+    Object.keys(sections).forEach((sectionName) => {
+      formDataHtml += `
+        <div class='${sectionName}'>
+          <h2>${sectionName}</h2>
+          <ul>
+      `;
+      sections[sectionName].forEach((value, index) => {
+        formDataHtml += `<li>${value}</li>`;
+      });
+      formDataHtml += `</ul></div>`;
     });
 
     formDataHtml += "</div>";
