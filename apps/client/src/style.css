@@ -1,8 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1rem;
+}
+
 input,
 textarea {
   padding: 1rem;
   border: 1px solid #eaecee;
   outline: none;
+  width: 100%;
 }
 
 input:hover,
@@ -24,9 +35,36 @@ label {
   font-weight: 500;
 }
 
+label > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+li {
+  list-style: none;
+}
+
 .section {
   display: grid;
   gap: 0.5rem;
+}
+
+.section > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section span {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.section ul {
+  border-top: 2px solid black;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .hello {
