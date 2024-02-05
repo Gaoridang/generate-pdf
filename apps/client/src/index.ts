@@ -24,7 +24,7 @@ routes.forEach((route) => {
   const button = createElement("button", {
     attributes: { "data-navigate": route },
     text: route.replace("/", ""),
-    onClick: () => router.navigate(route),
+    events: { click: () => router.navigate(route) },
   });
 
   header.appendChild(button);

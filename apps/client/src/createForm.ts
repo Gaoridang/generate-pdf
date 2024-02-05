@@ -1,7 +1,7 @@
-import { inputTypes, textAreaTypes } from "./constants";
+import { inputTypes } from "./constants";
 import createElement from "./createElement";
 import { createLabel } from "./createLabel";
-import { createSection } from "./createSection";
+import { createDynamicSection } from "./createSection";
 
 export function createForm() {
   const inputs = inputTypes.map((inputType) => {
@@ -14,35 +14,22 @@ export function createForm() {
     });
 
     if (inputType.name === "urls") {
-      return createLabel(inputType.kr, inputType.name, inputEl, "input", true);
+      return createLabel(inputType.kr, inputType.name, inputEl);
     }
 
-    return createLabel(inputType.kr, inputType.name, inputEl, "input");
+    return createLabel(inputType.kr, inputType.name, inputEl);
   });
-
-  const textAreas = textAreaTypes.map((textAreaType) => {
-    const textAreaEl = createElement("textarea", {
-      className: textAreaType.name,
-      id: textAreaType.name,
-      required: true,
-      attributes: { name: textAreaType.name, placeholder: textAreaType.placeholder },
-    });
-
-    const el = createLabel(textAreaType.kr, textAreaType.name, textAreaEl, "textarea", true);
-
-    return el;
-  });
-
   // FIXME: 엔터 누르면 커리어 인풋이 추가됨(?)
-  const careerSection = createSection("career", [textAreas[0]]);
-  const projectSection = createSection("project", [textAreas[1]]);
-  const urlSection = createSection("url", [inputs[5]]);
+  // const careerSection = createSection("career", [textAreas[0]]);
 
   const aboutMeContainer = createElement("div", {
     className: "about-me",
     children: [...inputs.slice(0, 5)],
   });
 
+  const urlSection = createDynamicSection("url", "포트폴리오", "input");
+  const careerSection = createDynamicSection("career", "경력");
+  const projectSection = createDynamicSection("project", "프로젝트");
   const careerContainer = createElement("div", {
     className: "careers",
     children: [careerSection, projectSection, urlSection],
