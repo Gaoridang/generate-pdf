@@ -12,6 +12,12 @@
 
 항상 CRA, VITE를 사용해서 리액트 프로젝트를 시작하다보니 리액트 없이 프로젝트를 만들 수 있을까라는 생각이 들었습니다. 이 프로젝트를 통해 리액트가 엘리먼트를 만드는 방식을 조금 더 이해하고, 해시를 이용한 라우팅 기능을 구현해 볼 수 있었습니다.
 
+참고:
+
+- https://velog.io/@sa02045/React-createElement-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0
+- https://velog.io/@real-bird/Javascript-Vanilla-JS-SPA
+- https://fe-developers.kakaoent.com/2022/221124-router-without-library/
+
 ### Webpack을 이용한 번들링
 
 직접 설정한 webpack 설정 파일을 통해 번들링을 해보면서 webpack의 핵심 기능에 대해 이해할 수 있었습니다. `entry` 와 `output` 을 내 입맛에 맞게 설정하고, `html-webpack-plugin` 을 이용해 메타 태그를 추가하고, `style-loader`, `css-loader` 를 이용해 스타일을 주입할 수 있었습니다. 마지막으로 자바스크립트를 타입스크립트로 마이그레이션 할 때 필요한 설정도 알아볼 수 있었습니다.
@@ -24,10 +30,11 @@ NodeJS 서버를 AWS EC2에 배포하면서, 서버를 운영하는데 필요한
 
 프로젝트를 모노레포로 마이그레이션하면서, 어렴풋하게 알고 있던 모노레포의 개념을 이해할 수 있었습니다.
 
-참고: <br />
-https://www.robinwieruch.de/javascript-monorepos/ <br />
-https://alexharri.com/blog/move-to-monorepo <br />
-https://turbo.build/repo/docs/getting-started/add-to-project
+참고:
+
+- https://www.robinwieruch.de/javascript-monorepos/
+- https://alexharri.com/blog/move-to-monorepo
+- https://turbo.build/repo/docs/getting-started/add-to-project
 
 ## 기술 스택
 
