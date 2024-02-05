@@ -1,0 +1,10 @@
+{
+  "name": "ts-config-gaoridang",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "base.json"
+  ]
+}
