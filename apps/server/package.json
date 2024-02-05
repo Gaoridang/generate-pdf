@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
-    "build": "cp src/style.css dist/style.css && tsc",
+    "build": "tsc && cp src/style.css dist/style.css ",
     "dev": "concurrently \"tsc -w\" \"nodemon -q dist/index.js\"",
     "lint": "eslint src/**/*.ts --fix"
   },
