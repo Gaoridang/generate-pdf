@@ -1,12 +1,17 @@
 import createElement from "./createElement";
 
-function addInput(target: HTMLElement, inputName: string, addButton: HTMLElement) {
-  const newInput = createElement("input", {
+function addInput(
+  target: HTMLElement,
+  tagName: keyof HTMLElementTagNameMap,
+  name: string,
+  addButton: HTMLElement
+) {
+  const newInput = createElement(tagName, {
     type: "text",
-    className: `${inputName}-input`,
+    className: `${name}-input`,
     required: true,
     attributes: {
-      name: `${inputName}[]`,
+      name: `${name}[]`,
       placeholder: "추가 정보를 입력하세요.",
       autocomplete: "off",
     },
@@ -14,7 +19,11 @@ function addInput(target: HTMLElement, inputName: string, addButton: HTMLElement
   target.insertBefore(newInput, addButton);
 }
 
-export function createSection(sectionName: string, children: HTMLElement[]) {
+export function createSection(
+  sectionName: string,
+  children: HTMLElement[],
+  tagName: keyof HTMLElementTagNameMap
+) {
   const newSection = createElement("div", {
     className: `section section-${sectionName}`,
     children: [...children],
@@ -25,7 +34,7 @@ export function createSection(sectionName: string, children: HTMLElement[]) {
     className: `button add-${sectionName}-button`,
     onClick: (e) => {
       e.preventDefault();
-      addInput(newSection, sectionName, addButton);
+      addInput(newSection, tagName, sectionName, addButton);
     },
   });
 

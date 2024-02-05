@@ -1,32 +1,39 @@
+import { inputTypes, textAreaTypes } from "./constants";
 import createElement from "./createElement";
+import { createLabel } from "./createLabel";
 import { createSection } from "./createSection";
-
-const inputTypes = [
-  { name: "title", placeholder: "제목을 입력하세요." },
-  { name: "position", placeholder: "프론트엔드 개발자" },
-  { name: "phoneNumber", placeholder: "01012345678", type: "tel" },
-  { name: "email", placeholder: "email@example.com", type: "email" },
-  { name: "coverLetter", placeholder: "자기소개를 입력하세요." },
-  { name: "career", placeholder: "경력을 입력하세요." },
-  { name: "projects", placeholder: "외부 활동이나 프로젝트를 입력하세요." },
-  { name: "urls", placeholder: "추가적인 링크를 넣어주세요." },
-];
 
 export function createForm() {
   const inputs = inputTypes.map((inputType) => {
     const inputEl = createElement("input", {
       className: inputType.name,
+      id: inputType.name,
       type: inputType.type || "text",
       required: true,
       attributes: { name: inputType.name, placeholder: inputType.placeholder, autocomplete: "off" },
     });
-    return inputEl;
+
+    const el = createLabel(inputType.kr, inputType.name, inputEl);
+    return el;
+  });
+
+  const textAreas = textAreaTypes.map((textAreaType) => {
+    const textAreaEl = createElement("textarea", {
+      className: textAreaType.name,
+      id: textAreaType.name,
+      required: true,
+      attributes: { name: textAreaType.name, placeholder: textAreaType.placeholder },
+    });
+
+    const el = createLabel(textAreaType.kr, textAreaType.name, textAreaEl);
+
+    return el;
   });
 
   // FIXME: 엔터 누르면 커리어 인풋이 추가됨(?)
-  const careerSection = createSection("career", [inputs[5]]);
-  const projectSection = createSection("project", [inputs[6]]);
-  const urlSection = createSection("url", [inputs[7]]);
+  const careerSection = createSection("career", [textAreas[0]], "textarea");
+  const projectSection = createSection("project", [textAreas[1]], "textarea");
+  const urlSection = createSection("url", [inputs[5]], "input");
 
   const aboutMeContainer = createElement("div", {
     className: "about-me",
