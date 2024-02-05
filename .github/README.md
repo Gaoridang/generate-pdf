@@ -58,15 +58,14 @@ NodeJS 서버를 AWS EC2에 배포하면서, 서버를 운영하는데 필요한
 <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white">
 
 ## 스크린샷
-
-https://github.com/Gaoridang/generate-pdf/assets/123650056/1a18e384-8f6f-4e99-9a04-584baf81ee95
+https://github.com/Gaoridang/generate-pdf/assets/123650056/4bdf6939-ebd5-47e2-9537-aae232f8dcaf
 
 ## 앞으로 할 작업
 
-- PDF 스타일링
-- 클라이언트 페이지 스타일링
-- 경력, 포트폴리오 일반 input에서 정해진 형식으로 바꾸기
-- 구글 애널리틱스 연결 및 도메인 구입
+- [ ] PDF 스타일링
+- [ ] 클라이언트 페이지 스타일링
+- [x] 경력, 포트폴리오 일반 input에서 정해진 형식으로 바꾸기
+- [ ] 구글 애널리틱스 연결 및 도메인 구입
 
 ## 추가
 
