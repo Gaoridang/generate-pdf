@@ -1,12 +1,11 @@
 import createElement from "./createElement";
 
-function addInput(
+export function addElement(
   target: HTMLElement,
   tagName: keyof HTMLElementTagNameMap,
-  name: string,
-  addButton: HTMLElement
+  name: string
 ) {
-  const newInput = createElement(tagName, {
+  const newEl = createElement(tagName, {
     type: "text",
     className: `${name}-input`,
     required: true,
@@ -16,29 +15,14 @@ function addInput(
       autocomplete: "off",
     },
   });
-  target.insertBefore(newInput, addButton);
+  target.insertAdjacentElement("beforeend", newEl);
 }
 
-export function createSection(
-  sectionName: string,
-  children: HTMLElement[],
-  tagName: keyof HTMLElementTagNameMap
-) {
+export function createSection(sectionName: string, children: HTMLElement[]) {
   const newSection = createElement("div", {
     className: `section section-${sectionName}`,
     children: [...children],
   });
-
-  const addButton = createElement("button", {
-    text: "추가하기",
-    className: `button add-${sectionName}-button`,
-    onClick: (e) => {
-      e.preventDefault();
-      addInput(newSection, tagName, sectionName, addButton);
-    },
-  });
-
-  newSection.appendChild(addButton);
 
   return newSection;
 }

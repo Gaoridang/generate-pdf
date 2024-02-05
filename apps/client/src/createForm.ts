@@ -13,8 +13,11 @@ export function createForm() {
       attributes: { name: inputType.name, placeholder: inputType.placeholder, autocomplete: "off" },
     });
 
-    const el = createLabel(inputType.kr, inputType.name, inputEl);
-    return el;
+    if (inputType.name === "urls") {
+      return createLabel(inputType.kr, inputType.name, inputEl, "input", true);
+    }
+
+    return createLabel(inputType.kr, inputType.name, inputEl, "input");
   });
 
   const textAreas = textAreaTypes.map((textAreaType) => {
@@ -25,15 +28,15 @@ export function createForm() {
       attributes: { name: textAreaType.name, placeholder: textAreaType.placeholder },
     });
 
-    const el = createLabel(textAreaType.kr, textAreaType.name, textAreaEl);
+    const el = createLabel(textAreaType.kr, textAreaType.name, textAreaEl, "textarea", true);
 
     return el;
   });
 
   // FIXME: 엔터 누르면 커리어 인풋이 추가됨(?)
-  const careerSection = createSection("career", [textAreas[0]], "textarea");
-  const projectSection = createSection("project", [textAreas[1]], "textarea");
-  const urlSection = createSection("url", [inputs[5]], "input");
+  const careerSection = createSection("career", [textAreas[0]]);
+  const projectSection = createSection("project", [textAreas[1]]);
+  const urlSection = createSection("url", [inputs[5]]);
 
   const aboutMeContainer = createElement("div", {
     className: "about-me",
