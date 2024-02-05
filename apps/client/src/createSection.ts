@@ -15,17 +15,20 @@ export function handleAddElement(
       return;
     }
 
+    const uniqueName = `${sectionName}-list-item-${container ? container.children.length : 0}`;
+
     const textArea = createElement(tagName, {
-      className: `${sectionName}-list-item-${container ? container.children.length : 0}`,
-      id: `${sectionName}-list-item-${container ? container.children.length : 0}`,
+      className: uniqueName,
+      id: uniqueName,
       required: true,
-      attributes: { name: sectionName, placeholder: `${sectionTitle}을 입력하세요` },
+      attributes: {
+        name: uniqueName,
+        placeholder: `${sectionTitle}을 입력하세요`,
+        "data-section": sectionName,
+      },
     });
 
-    const item = createListItem(
-      `${sectionName}-list-item-${container ? container.children.length : 0}`,
-      [textArea]
-    );
+    const item = createListItem(uniqueName, [textArea]);
     container.appendChild(item);
   };
 }
@@ -40,9 +43,9 @@ export function createDynamicSection(
   });
 
   const addElementButton = createElement("button", {
-    type: "button",
     className: `add-${sectionName}-button`,
     text: "추가하기",
+    attributes: { type: "button" },
     events: {
       click: handleAddElement(sectionName, sectionTitle, tagName),
     },
