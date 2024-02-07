@@ -1,3 +1,64 @@
-.title {
-  color: red;
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Pretendard';
+}
+
+.form-data {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem 3rem;
+}
+
+h2 {
+  margin-block: 1rem;
+}
+
+li {
+  list-style: none;
+  font-size: 1rem;
+}
+
+.title li {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.position li {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.phoneNumber,
+.email {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.phoneNumber h2,
+.email h2 {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #c7c7c7;
+}
+
+.career li::before,
+.project li::before {
+  position: relative;
+  content: '✨';
+}
+
+.career li,
+.project li {
+  margin-bottom: 0.5rem;
+}
+
+.url li {
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  border: 1px solid rgb(135, 135, 135);
 }
