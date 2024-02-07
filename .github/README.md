@@ -57,9 +57,11 @@ NodeJS 서버를 AWS EC2에 배포하면서, 서버를 운영하는데 필요한
 
 <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white">
 
-## 스크린샷
-https://github.com/Gaoridang/generate-pdf/assets/123650056/0f7329fb-de6c-4fce-b771-c10b92904f22
+<img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white">
 
+## 스크린샷
+
+https://github.com/Gaoridang/generate-pdf/assets/123650056/0f7329fb-de6c-4fce-b771-c10b92904f22
 
 ## 앞으로 할 작업
 
