@@ -1,7 +1,15 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("./fonts/Pretendard-Regular.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Pretendard";
 }
 
 body {
@@ -112,5 +120,3 @@ li {
 .coverLetter-label {
   grid-area: coverLetter;
 }
-
-/* sections */
