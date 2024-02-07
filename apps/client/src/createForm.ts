@@ -2,6 +2,7 @@ import { inputTypes } from "./constants";
 import createElement from "./createElement";
 import { createLabel } from "./createLabel";
 import { createDynamicSection } from "./createSection";
+import { convertToKorean } from "./utils/convertNameToKorean";
 
 export function createForm() {
   const inputs = inputTypes.map((inputType) => {
@@ -53,36 +54,35 @@ export function createForm() {
 
     formElements.forEach((element) => {
       const inputElement = element as HTMLInputElement | HTMLTextAreaElement;
-      const value = (element as HTMLInputElement).value.trim();
+      let value = (element as HTMLInputElement).value.trim();
 
-      if (inputElement.dataset.section) {
-        const section = inputElement.dataset.section;
-
-        if (!value) return;
-
-        if (!sections[section]) {
-          sections[section] = [];
-        }
-
-        sections[section].push(value);
-      } else {
-        const name = inputElement.name;
-        if (!sections[name]) {
-          sections[name] = [value];
-        }
+      if (inputElement instanceof HTMLTextAreaElement) {
+        value = value.replace(/\n/g, "<br>");
       }
+
+      if (!value) return;
+
+      const section = inputElement.dataset.section || inputElement.name;
+      sections[section] = sections[section] || [];
+      sections[section].push(value);
     });
 
     let formDataHtml = `<div class='form-data'>`;
 
     Object.keys(sections).forEach((sectionName) => {
-      formDataHtml += `
+      if (sectionName === "title" || sectionName === "position") {
+        formDataHtml += `<div class='${sectionName}'>
+        <ul>`;
+      } else {
+        formDataHtml += `
         <div class='${sectionName}'>
-          <h2>${sectionName}</h2>
-          <ul>
-      `;
+        <h2>${convertToKorean(sectionName)}</h2>
+        <ul>
+        `;
+      }
       sections[sectionName].forEach((value, index) => {
-        formDataHtml += `<li>${value}</li>`;
+        const formattedValue = value.replace(/\n/g, "<br>");
+        formDataHtml += `<li>${formattedValue}</li>`;
       });
       formDataHtml += `</ul></div>`;
     });
