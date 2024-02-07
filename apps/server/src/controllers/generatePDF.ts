@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { pdfDataSchema } from '../libs/schema';
 import puppeteer from 'puppeteer';
+import path from 'path';
 
 const generatePDF = async (req: Request, res: Response) => {
   try {
@@ -11,11 +12,11 @@ const generatePDF = async (req: Request, res: Response) => {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
       try {
-        await page.addStyleTag({ path: './style.css' });
+        await page.setContent(htmlContent);
+        await page.addStyleTag({ path: path.join(__dirname, '..', 'style.css') });
       } catch (styleError) {
         console.error('Error loading styles:', styleError);
       }
-      await page.setContent(htmlContent);
       const pdf = await page.pdf({ format: 'A4' });
       await browser.close();
 
